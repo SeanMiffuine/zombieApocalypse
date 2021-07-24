@@ -12,7 +12,7 @@ public class Enemy {
     private int positionY;
 
     public Enemy() {
-        this.speed = 10;
+        this.speed = 5;
 
         pickSpawn(positionX, positionY);
     }
@@ -27,9 +27,9 @@ public class Enemy {
             this.positionX = GameData.WINDOW_WIDTH; //right side
             this.positionY = rand.nextInt(GameData.WINDOW_HEIGHT);
         } else if (side == 2) {
-            this.positionX = rand.nextInt(GameData.WINDOW_WIDTH); //TOP
+            this.positionX = rand.nextInt(GameData.WINDOW_WIDTH); // top side
             this.positionY = 0;
-        } else if (side == 3) {
+        } else {
             this.positionX = rand.nextInt(GameData.WINDOW_WIDTH); //right side
             this.positionY = GameData.WINDOW_HEIGHT;
         }
@@ -50,13 +50,26 @@ public class Enemy {
         }
     }
 
-    public boolean getShot() {
-        //!!! health?
+    public boolean getShot(Bullet bullet) {
+
+
     }
 
     public boolean hitPlayer(Player player) {
-        //!!!
+        if ((positionX + (SIZE / 2)) >= (player.getPositionX() - player.getSize())
+                && (positionX + (SIZE / 2)) <= (player.getPositionX() + player.getSize())) {
+            return true; //detect touching player from left
+        } else if ((positionX - (SIZE / 2)) <= (player.getPositionX() + player.getSize())
+                && (positionX - (SIZE / 2)) >= (player.getPositionX() - player.getSize())) {
+            return true; //detect touching player from right
+        } else if ((positionY + (SIZE / 2)) >= (player.getPositionY() - player.getSize())
+                && (positionY + (SIZE / 2)) <= (player.getPositionY() + player.getSize())) {
+            return true; //detect touching player from top
+        } else if ((positionY - (SIZE / 2)) >= (player.getPositionY() + player.getSize())
+                && (positionY - (SIZE / 2)) <= (player.getPositionY() - player.getSize())) {
+            return true; //detect touching player from bottom
+        } else {
+            return false;
+        }
     }
-
-
 }

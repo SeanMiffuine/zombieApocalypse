@@ -6,6 +6,7 @@ import java.util.List;
 
 // Contains all of current game data. Updates according to user inputs from GameRun.
 // NOTE: some code is based off of material from class, e.g. the Space Invader Game.
+// https://github.students.cs.ubc.ca/CPSC210/B02-SpaceInvadersBase
 public class GameData {
     public static final int WINDOW_WIDTH = 1600;
     public static final int WINDOW_HEIGHT = 900;
@@ -43,10 +44,31 @@ public class GameData {
     //effects: detect if enemy is touching player; if so, they die, and player loses health
     private void playerGetHit() {
         //if enemy touches u,they die, but u lose like health.
-        for
+        List<Enemy> deadEnemies = new ArrayList<Enemy>();
+
+        for (Enemy e: enemies) {
+            if (e.hitPlayer(player)) {
+                deadEnemies.add(e);
+                player.loseHealth();
+            }
+        }
+        enemies.removeAll(deadEnemies);
     }
 
     private void enemyGetHit() {
+        List<Enemy> deadEnemies = new ArrayList<Enemy>();
+        List<Bullet> shotBullets = new ArrayList<Bullet>();
+
+        for (Enemy e : enemies) {
+            for (Bullet b : bullets) {
+                if (e.getShot(b)) {
+                    deadEnemies.add(e);
+                    shotBullets.add(b);
+                }
+            }
+        }
+        enemies.removeAll(deadEnemies);
+        bullets.removeAll(shotBullets);
 
     }
 
@@ -64,10 +86,12 @@ public class GameData {
     }
 
     private void bulletUpdate() {
+        // !!!
         bulletOutOfBounds();
     }
 
     private void gameOverScene() {
+        //player health is 0 gg
     }
 
     private void shoot() {

@@ -8,6 +8,8 @@ import java.awt.event.KeyEvent;
 import static com.sun.java.accessibility.util.AWTEventMonitor.addKeyListener;
 
 // Runs the game as well as take in inputs form user (Main game loop).
+// NOTE: some code is based off of material from class, e.g. the Space Invader Game.
+// https://github.students.cs.ubc.ca/CPSC210/B02-SpaceInvadersBase
 public class GameRun {
     private GameData game;
 
@@ -35,7 +37,7 @@ public class GameRun {
     public void printData() {
         // !!!
     }
-    // FROM CLASS EXAMPLE SPACE INVADER
+
     // effects: takes in inputs from player to move / shoot / interact.
     private class KeyHandler extends KeyAdapter {
         @Override

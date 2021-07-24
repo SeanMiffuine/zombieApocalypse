@@ -17,7 +17,7 @@ public class Player {
     public Player() {
         this.positionX = SIZE;
         this.positionY = SIZE;
-        this.speed = 10;
+        this.speed = 15;
         this.ammo = 100;
         this.health = 100;
     }
@@ -95,6 +95,10 @@ public class Player {
         }
     }
 
+    public void loseHealth() {
+        health -= 20;
+    }
+
     public int getPositionX() {
         return positionX;
     }
@@ -109,6 +113,10 @@ public class Player {
 
     public int getAmmo() {
         return ammo;
+    }
+
+    public int getSize() {
+        return SIZE;
     }
 
 }
