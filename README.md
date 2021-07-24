@@ -36,8 +36,7 @@ future!
 **As a User, I want to be able to:**
 - start game and restart game over and over
 - walk around the map
-- buy items and weapons
-- switch between items and weapons in the inventory
+- upgrade weapon
 - view game information such as health, time, points, money
-- eliminate and avoid enemies
+- eliminate and avoid enemies (shoot bullets pew pew)
 - view highest round (high score)
