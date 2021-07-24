@@ -14,16 +14,30 @@ higher the score. *Are you able to defend yourself against waves of demons and d
 
 Great question. Who would play this game? Here's a list of possible users:
 		
-		- My fellow game dev friends
-		- Fellow university students (not during class of course)
-		- Anyone looking for a quick, fun game
-		- survival game fans
+- My fellow game dev friends
+- Fellow university students (not during class of course)
+- Anyone looking for a quick, fun game
+- survival game fans
 
 ### *Personal Interest*
 
 The reason for picking this project is because of my personal interest in making games. I've always loved
 playing video games, and so I've always wanted to try my hand at them. I wanted to create a simple and short game
 that someone can enjoy at whichever time you want; I often find myself with 5 minutes before a class, not knowing 
-what to do. Maybe this game can help fill those times.
+what to do. Maybe this game can help fill those times, and would also be something cool to show people in the 
+future!
 
 
+
+
+
+## User Stories
+
+**As a User, I want to be able to:**
+- start game and restart game over and over
+- walk around the map
+- buy items and weapons
+- switch between items and weapons in the inventory
+- view game information such as health, time, points, money
+- eliminate and avoid enemies
+- view highest round (high score)
