@@ -38,4 +38,14 @@ public class Bullet {
     public int getSize() {
         return SIZE;
     }
+
+    public boolean bulletOutOfBounds() {
+        if (positionX < 0 || positionX > GameData.WINDOW_WIDTH) {
+            return true;
+        } else if (positionY < 0 || positionY > GameData.WINDOW_HEIGHT) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

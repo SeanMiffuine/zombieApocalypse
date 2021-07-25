@@ -96,7 +96,7 @@ public class Player {
     }
 
     public void loseHealth() {
-        health -= 20;
+        this.health -= 20;
     }
 
     public int getPositionX() {
@@ -117,6 +117,10 @@ public class Player {
 
     public int getSize() {
         return SIZE;
+    }
+
+    public boolean noHealth() {
+        return health == 0;
     }
 
 }

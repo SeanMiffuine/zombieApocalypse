@@ -42,6 +42,30 @@ public class GameData {
         gameOverScene();
     }
 
+    // effects: give data to printData in GameRun.
+    public String pushData() {
+
+        return "a";
+    }
+
+    // FROM CLASS EXAMPLE SPACE INVADER
+    // modifies: this
+    // effects: changes player position depending on user input. Space to shoot,
+    // P to restart, ESCAPE to exit the game, WASD for movements
+    public void keyPressed(int keyCode) {
+        if (keyCode == KeyEvent.VK_SPACE) {
+            player.shoot();
+            shoot();
+        } else if (keyCode == KeyEvent.VK_P && gameOver) {
+            restart();
+        } else if (keyCode == KeyEvent.VK_ESCAPE) {
+            System.exit(0);
+        } else {
+            player.playerMove(keyCode);
+        }
+
+    }
+
     // modifies: this
     // effects: spawn multiple enemies according to the round number
     private void spawn(int round) {
@@ -89,7 +113,13 @@ public class GameData {
 
 
     private void bulletOutOfBounds() {
-
+        List<Bullet> shotBullets = new ArrayList<Bullet>();
+        for (Bullet b : bullets) {
+            if (b.bulletOutOfBounds()) {
+                shotBullets.add(b);
+            }
+        }
+        bullets.removeAll(shotBullets);
     }
     
     private void enemyUpdate() {
@@ -105,8 +135,12 @@ public class GameData {
         bulletOutOfBounds();
     }
 
+    // effects: ends the game and restarts
     private void gameOverScene() {
-        //player health is 0 gg
+        if (player.noHealth()) {
+            gameOver = true;
+
+        }
     }
 
     private void shoot() {
@@ -115,7 +149,6 @@ public class GameData {
             bullets.add(bullet);
         }
     }
-
 
     //effects: resets the game state back to original.
     private void restart() {
@@ -127,22 +160,5 @@ public class GameData {
         player = new Player();
     }
 
-    // FROM CLASS EXAMPLE SPACE INVADER
-    // modifies: this
-    // effects: changes player position depending on user input. Space to shoot,
-    // P to restart, ESCAPE to exit the game.
-    public void keyPressed(int keyCode) {
-        if (keyCode == KeyEvent.VK_SPACE) {
-            player.shoot();
-            shoot();
-        } else if (keyCode == KeyEvent.VK_P && gameOver) {
-            //restart
-        } else if (keyCode == KeyEvent.VK_ESCAPE) {
-            System.exit(0);
-        } else {
-            player.playerMove(keyCode);
-            // control player
-        }
 
-    }
 }

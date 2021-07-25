@@ -36,7 +36,8 @@ future!
 **As a User, I want to be able to:**
 - start game and restart game over and over
 - walk around the map
-- upgrade weapon
-- view game information such as health, time, points, money
-- eliminate and avoid enemies (shoot bullets pew pew)
-- view highest round (high score)
+- view game information such as health, rounds, money, ammo
+- shoot weapon (pew pew)
+- view spawned enemies
+- eliminate enemies and get high score (in rounds)
+- lose when health reaches 0
