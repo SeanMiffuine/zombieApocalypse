@@ -3,7 +3,7 @@ package model;
 // A projectile coming from Player in thr form of a bullet. Direct hits cause enemies to die.
 public class Bullet {
 
-    public static final int SIZE = 5;
+    public static final int SIZE = 4;
     public static final int SPEED = 20;
     private int positionX;
     private int positionY;
@@ -33,5 +33,9 @@ public class Bullet {
 
     public int getPositionY() {
         return positionY;
+    }
+
+    public int getSize() {
+        return SIZE;
     }
 }

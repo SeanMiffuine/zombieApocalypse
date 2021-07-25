@@ -13,10 +13,10 @@ public class Enemy {
 
     public Enemy() {
         this.speed = 5;
-
         pickSpawn(positionX, positionY);
     }
 
+    // effects: spawn an enemy on a random side of the screen at random position
     private void pickSpawn(int positionX, int positionY) {
         Random rand = new Random();
         int side = rand.nextInt(4);
@@ -51,7 +51,21 @@ public class Enemy {
     }
 
     public boolean getShot(Bullet bullet) {
-
+        if ((positionX + (SIZE / 2)) >= (bullet.getPositionX() - bullet.getSize())
+                && (positionX + (SIZE / 2)) <= (bullet.getPositionX() + bullet.getSize())) {
+            return true; //detect touching bullet from left
+        } else if ((positionX - (SIZE / 2)) <= (bullet.getPositionX() + bullet.getSize())
+                && (positionX - (SIZE / 2)) >= (bullet.getPositionX() - bullet.getSize())) {
+            return true; //detect touching bullet from right
+        } else if ((positionY + (SIZE / 2)) >= (bullet.getPositionY() - bullet.getSize())
+                && (positionY + (SIZE / 2)) <= (bullet.getPositionY() + bullet.getSize())) {
+            return true; //detect touching bullet from top
+        } else if ((positionY - (SIZE / 2)) >= (bullet.getPositionY() + bullet.getSize())
+                && (positionY - (SIZE / 2)) <= (bullet.getPositionY() - bullet.getSize())) {
+            return true; //detect touching bullet from bottom
+        } else {
+            return false;
+        }
 
     }
 

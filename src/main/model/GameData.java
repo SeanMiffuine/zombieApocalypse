@@ -3,6 +3,7 @@ package model;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
+import java.lang.Math;
 
 // Contains all of current game data. Updates according to user inputs from GameRun.
 // NOTE: some code is based off of material from class, e.g. the Space Invader Game.
@@ -33,12 +34,23 @@ public class GameData {
     // effects: updates the game data as time goes on. Updates movements of all sprites,
     // checks for kills, boundaries, game over, and next rounds.
     public void update() {
+        spawn(round);
         bulletUpdate();
         enemyUpdate();
         playerGetHit();
         enemyGetHit();
-        nextRound();
         gameOverScene();
+    }
+
+    // modifies: this
+    // effects: spawn multiple enemies according to the round number
+    private void spawn(int round) {
+        if (nextRound()) {
+            int amount = (int) Math.pow(3,round);
+            for (int i = 0; i < amount; i++) {
+                enemies.add(new Enemy());
+            }
+        }
     }
 
     //effects: detect if enemy is touching player; if so, they die, and player loses health
@@ -69,14 +81,15 @@ public class GameData {
         }
         enemies.removeAll(deadEnemies);
         bullets.removeAll(shotBullets);
-
     }
 
-    private void nextRound() {
+    private boolean nextRound() {
+        return enemies.isEmpty();
     }
 
 
     private void bulletOutOfBounds() {
+
     }
     
     private void enemyUpdate() {
@@ -86,7 +99,9 @@ public class GameData {
     }
 
     private void bulletUpdate() {
-        // !!!
+        for (Bullet bullet : bullets) {
+            bullet.bulletMove();
+        }
         bulletOutOfBounds();
     }
 
