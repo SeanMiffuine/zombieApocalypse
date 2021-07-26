@@ -67,10 +67,13 @@ public class Enemy {
     // effects: returns true if the passed Player parameter is within range of the enemy,
     //          representing that the player got attacked by the enemy.
     public boolean hitPlayer(Player player) {
-        return (positionX >= (player.getPositionX() - player.getSize()))
+        if ((positionX >= (player.getPositionX() - player.getSize()))
                 && (positionX <= (player.getPositionX() + player.getSize()))
                 && (positionY >= (player.getPositionY() - player.getSize()))
-                && (positionY <= (player.getPositionY() + player.getSize()));
+                && (positionY <= (player.getPositionY() + player.getSize()))) {
+            return true;
+        }
+        return false;
     }
 
     // effects: returns positionX

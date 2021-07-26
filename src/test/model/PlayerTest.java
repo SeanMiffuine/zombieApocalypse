@@ -29,6 +29,8 @@ public class PlayerTest {
         player.shoot();
         player.shoot();
         assertEquals(player.getAmmo(), 0);
+        player.shoot();
+        assertEquals(player.getAmmo(), 0);
     }
 
     @Test

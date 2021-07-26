@@ -3,6 +3,9 @@ package model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class GameDataTest {
@@ -53,6 +56,51 @@ class GameDataTest {
     public void testDoInputM() {
         game.doInput("m");
         assertEquals(1, game.getBullets().size());
+        assertEquals(2, game.getPlayer().getAmmo());
+    }
+
+    @Test
+    public void testDoInputW() {
+        game.doInput("w");
+        assertEquals(110, game.getPlayer().getPositionY());
+    }
+
+    @Test
+    public void testDoInputS() {
+        game.doInput("s");
+        assertEquals(140, game.getPlayer().getPositionY());
+    }
+
+    @Test
+    public void testDoInputA() {
+        game.doInput("a");
+        assertEquals(110, game.getPlayer().getPositionX());
+    }
+
+    @Test
+    public void testDoInputD() {
+        game.doInput("d");
+        assertEquals(140, game.getPlayer().getPositionX());
+    }
+
+
+    @Test
+    public void testDoInputP() {
+        game.getPlayer().loseHealth();
+        game.getPlayer().loseHealth();
+        game.getPlayer().loseHealth();
+        game.getPlayer().loseHealth();
+        game.getPlayer().loseHealth();
+        game.setGameOver();
+        game.doInput("p");
+        assertEquals(250, game.getWindowWidth());
+        assertEquals(250, game.getWindowHeight());
+        assertEquals(50, game.getBorder());
+        assertEquals(0, game.getRound());
+        assertEquals(0, game.getMoney());
+        assertEquals(0, game.getEnemies().size());
+        assertEquals(0, game.getBullets().size());
+        assertFalse(game.isGameOver());
     }
 
     @Test
@@ -73,6 +121,22 @@ class GameDataTest {
         assertEquals(1, game.getBullets().size());
         game.shoot();
         assertEquals(2, game.getBullets().size());
+    }
+
+
+    @Test
+    public void testShootNoBullets() {
+        game.shoot();
+        game.getPlayer().shoot();
+        assertEquals(1, game.getBullets().size());
+        game.shoot();
+        game.getPlayer().shoot();
+        assertEquals(2, game.getBullets().size());
+        game.shoot();
+        game.getPlayer().shoot();
+        game.shoot();
+        game.getPlayer().shoot();
+        assertEquals(3, game.getBullets().size());
     }
 
     @Test
@@ -140,6 +204,20 @@ class GameDataTest {
         game.getPlayer().loseHealth();
         game.setGameOver();
         assertTrue(game.pushDataGame().equals("Game over. P for restart."));
+    }
+
+    @Test
+    public void testEnemyGetHit() {
+        List<Enemy> enemies = new ArrayList<Enemy>();
+        enemies.add(new Enemy());
+        game.setEnemies(enemies);
+        List<Bullet> bullets = new ArrayList<Bullet>();
+        bullets.add(new Bullet(enemies.get(0).getPositionX(), enemies.get(0).getPositionY(), 1));
+        game.setBullets(bullets);
+
+        game.enemyGetHit();
+        assertTrue(game.getEnemies().isEmpty());
+        assertTrue(game.getBullets().isEmpty());
     }
 
 
