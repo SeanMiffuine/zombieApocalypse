@@ -62,13 +62,13 @@ public class EnemyTest {
 
     @Test
     public void testGetShotTrue() {
-        Bullet bulletUp = new Bullet(enemy.getPositionX(), enemy.getPositionY(), 1);
+        Bullet bulletUp = new Bullet(enemy.getPositionX() + 1, enemy.getPositionY(), 1);
         assertTrue(enemy.getShot(bulletUp));
-        Bullet bulletDown = new Bullet(enemy.getPositionX(), enemy.getPositionY(), 2);
+        Bullet bulletDown = new Bullet(enemy.getPositionX() - 1, enemy.getPositionY(), 2);
         assertTrue(enemy.getShot(bulletDown));
-        Bullet bulletLeft = new Bullet(enemy.getPositionX(), enemy.getPositionY(), 3);
+        Bullet bulletLeft = new Bullet(enemy.getPositionX(), enemy.getPositionY() + 1, 3);
         assertTrue(enemy.getShot(bulletLeft));
-        Bullet bulletRight = new Bullet(enemy.getPositionX(), enemy.getPositionY(), 4);
+        Bullet bulletRight = new Bullet(enemy.getPositionX(), enemy.getPositionY() - 1, 4);
         assertTrue(enemy.getShot(bulletRight));
     }
 
@@ -77,7 +77,6 @@ public class EnemyTest {
         Player player = new Player();
         assertFalse(enemy.hitPlayer(player));
     }
-
 
     @Test
     public void testHitPlayerTrue() {

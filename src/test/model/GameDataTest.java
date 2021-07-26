@@ -221,11 +221,12 @@ class GameDataTest {
         game.setEnemies(enemies);
         List<Bullet> bullets = new ArrayList<Bullet>();
         bullets.add(new Bullet(enemies.get(0).getPositionX(), enemies.get(0).getPositionY(), 1));
+        bullets.add(new Bullet(125, 125, 1));
         game.setBullets(bullets);
 
         game.enemyGetHit();
         assertTrue(game.getEnemies().isEmpty());
-        assertTrue(game.getBullets().isEmpty());
+        assertEquals(game.getBullets().size(), 1);
     }
 
     @Test
