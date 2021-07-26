@@ -25,7 +25,7 @@ public class Bullet {
             this.positionY += SPEED;
         } else if (this.direction == 3) {
             this.positionX -= SPEED;
-        } else if (this.direction == 4) {
+        } else { //4
             this.positionX += SPEED;
         }
     }
@@ -59,10 +59,8 @@ public class Bullet {
     public boolean bulletOutOfBounds() {
         if (positionX < 0 || positionX > GameData.WINDOW_WIDTH) {
             return true;
-        } else if (positionY < 0 || positionY > GameData.WINDOW_HEIGHT) {
-            return true;
         } else {
-            return false;
+            return positionY < 0 || positionY > GameData.WINDOW_HEIGHT;
         }
     }
 }

@@ -80,4 +80,16 @@ public class BulletTest {
         assertTrue(bullet.bulletOutOfBounds());
     }
 
+    @Test
+    public void testBoundaryFalse() {
+        bullet = new Bullet(125, 125, 4);
+        assertFalse(bullet.bulletOutOfBounds());
+    }
+
+    @Test
+    public void testGetSpeed() {
+        bullet = new Bullet(125, 125, 4);
+        assertEquals(bullet.getSpeed(), 20);
+    }
+
 }
