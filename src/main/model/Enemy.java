@@ -48,7 +48,7 @@ public class Enemy {
         if (this.positionY < player.getPositionY()) {
             positionY += speed;
         } else if (this.positionY > player.getPositionY()) {
-            positionX -= speed;
+            positionY -= speed;
         }
     }
 

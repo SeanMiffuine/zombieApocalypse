@@ -23,6 +23,17 @@ public class PlayerTest {
     }
 
     @Test
+    public void testShoot() {
+        player.shoot();
+        assertEquals(player.getAmmo(), 2);
+        player.shoot();
+        player.shoot();
+        player.shoot();
+        player.shoot();
+        assertEquals(player.getAmmo(), 0);
+    }
+
+    @Test
     public void testPlayerMoveUp() {
         player.playerMove("w");
         assertEquals(player.getPositionY(), 110);
@@ -108,6 +119,26 @@ public class PlayerTest {
         }
         player.boundaryCheck();
         assertEquals(player.getPositionX(), 200);
+    }
+
+    @Test
+    public void testLostHealth() {
+        player.loseHealth();
+        assertEquals(player.getHealth(), 80);
+        player.loseHealth();
+        player.loseHealth();
+        assertEquals(player.getHealth(), 40);
+    }
+
+
+    @Test
+    public void testNoHealth() {
+        player.loseHealth();
+        player.loseHealth();
+        player.loseHealth();
+        player.loseHealth();
+        player.loseHealth();
+        assertTrue(player.noHealth());
     }
 
 
