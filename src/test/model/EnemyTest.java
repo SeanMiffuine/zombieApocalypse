@@ -16,8 +16,25 @@ public class EnemyTest {
     @Test
     public void testConstruct() {
         assertEquals(enemy.getSpeed(), 5);
-        //testing random...
+        //testing random spawn
+        assertTrue(enemy.getPositionX() == 0 || enemy.getPositionX() == GameData.WINDOW_WIDTH
+                || (enemy.getPositionX() >= 0 && enemy.getPositionX() < GameData.WINDOW_WIDTH ));
+        assertTrue(enemy.getPositionY() == 0 || enemy.getPositionY() == GameData.WINDOW_HEIGHT
+                || (enemy.getPositionY() >= 0 && enemy.getPositionY() < GameData.WINDOW_HEIGHT ));
     }
+
+    @Test
+    public void testGetPositionX() {
+        assertTrue(enemy.getPositionX() == 0 || enemy.getPositionX() == GameData.WINDOW_WIDTH
+                || (enemy.getPositionX() >= 0 && enemy.getPositionX() < GameData.WINDOW_WIDTH ));
+    }
+
+    @Test
+    public void testGetPositionY() {
+        assertTrue(enemy.getPositionY() == 0 || enemy.getPositionY() == GameData.WINDOW_HEIGHT
+                || (enemy.getPositionY() >= 0 && enemy.getPositionY() < GameData.WINDOW_HEIGHT ));
+    }
+
 
     @Test
     public void testChase() {
@@ -31,16 +48,28 @@ public class EnemyTest {
             assertEquals(enemy.getPositionX(), enemyBeforePosX - enemy.getSpeed());
         }
         if (enemy.getPositionY() < player.getPositionY()) {
-            assertEquals(enemy.getPositionY(), enemyBeforePosX + enemy.getSpeed());
+            assertEquals(enemy.getPositionY(), enemyBeforePosY + enemy.getSpeed());
         } else if (enemy.getPositionY() > player.getPositionY()) {
             assertEquals(enemy.getPositionY(), enemyBeforePosY - enemy.getSpeed());
         }
     }
 
     @Test
-    public void testGetShot() {
+    public void testGetShotFalse() {
         Bullet bullet = new Bullet(125, 125, 1);
         assertFalse(enemy.getShot(bullet));
+    }
+
+    @Test
+    public void testGetShotTrue() {
+        Bullet bullet = new Bullet(enemy.getPositionX(), enemy.getPositionY(), 1);
+        assertTrue(enemy.getShot(bullet));
+    }
+
+    @Test
+    public void testHitPlayer() {
+        Player player = new Player();
+        assertFalse(enemy.hitPlayer(player));
     }
 
 }

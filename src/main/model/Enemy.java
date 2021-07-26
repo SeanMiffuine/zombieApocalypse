@@ -42,12 +42,14 @@ public class Enemy {
     public void chase(Player player) {
         if (this.positionX < player.getPositionX()) {
             positionX += speed;
-        } else if (this.positionX > player.getPositionX()) {
+        }
+        if (this.positionX > player.getPositionX()) {
             positionX -= speed;
         }
         if (this.positionY < player.getPositionY()) {
             positionY += speed;
-        } else if (this.positionY > player.getPositionY()) {
+        }
+        if (this.positionY > player.getPositionY()) {
             positionY -= speed;
         }
     }
