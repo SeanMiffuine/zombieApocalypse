@@ -50,6 +50,11 @@ public class Bullet {
         return SPEED;
     }
 
+    // effects: gets direction
+    public int getDirection() {
+        return direction;
+    }
+
     // effects: returns true if the bullet is out of the bounds of the game window, else false.
     public boolean bulletOutOfBounds() {
         if (positionX < 0 || positionX > GameData.WINDOW_WIDTH) {

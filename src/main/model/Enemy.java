@@ -80,4 +80,8 @@ public class Enemy {
     public int getPositionY() {
         return positionY;
     }
+
+    public int getSpeed() {
+        return speed;
+    }
 }

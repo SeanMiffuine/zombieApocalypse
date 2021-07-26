@@ -154,7 +154,7 @@ public class GameData {
 
     // modifies: this
     // effects: spawn multiple enemies according to the round number, exponentially increases. 3 ^ round #
-    private void spawn() {
+    public void spawn() {
         if (nextRound()) {
             this.round++;
             int amount = (int) Math.pow(3,this.round);
@@ -166,7 +166,7 @@ public class GameData {
 
     // modifies: this
     //effects: detect if enemy is touching player; if so, enemy dies, and player loses health
-    private void playerGetHit() {
+    public void playerGetHit() {
         //if enemy touches u,they die, but u lose like health.
         List<Enemy> deadEnemies = new ArrayList<Enemy>();
 
@@ -181,7 +181,7 @@ public class GameData {
 
     // modifies: this
     // effects: if enemy is hit by any bullet existing on the playing field, both bullet and enemy will be removed
-    private void enemyGetHit() {
+    public void enemyGetHit() {
         List<Enemy> deadEnemies = new ArrayList<Enemy>();
         List<Bullet> shotBullets = new ArrayList<Bullet>();
 
@@ -198,13 +198,13 @@ public class GameData {
     }
 
     // effects: returns true if all enemies have been eliminated.
-    private boolean nextRound() {
+    public boolean nextRound() {
         return enemies.isEmpty();
     }
 
     // modifies: this
     // effects: if bullet travels out of the boundaries of the game screen, then remove the bullet.
-    private void bulletOutOfBounds() {
+    public void bulletOutOfBounds() {
         List<Bullet> shotBullets = new ArrayList<Bullet>();
         for (Bullet b : bullets) {
             if (b.bulletOutOfBounds()) {
@@ -216,7 +216,7 @@ public class GameData {
 
     // modifies: this
     // effects: updates the positions of all enemies on the screen
-    private void enemyUpdate() {
+    public void enemyUpdate() {
         for (Enemy e : enemies) {
             e.chase(player);
         }
@@ -224,7 +224,7 @@ public class GameData {
 
     // modifies: this
     // effects: updates the positions of all bullets on the screen
-    private void bulletUpdate() {
+    public void bulletUpdate() {
         for (Bullet b : bullets) {
             b.bulletMove();
         }
@@ -233,7 +233,7 @@ public class GameData {
 
     // modifies: this
     // effects: if player has no more health, make it game over.
-    private void setGameOver() {
+    public void setGameOver() {
         if (player.noHealth()) {
             gameOver = true;
         }
@@ -241,7 +241,7 @@ public class GameData {
 
     // modifies: this
     // effects: shoots bullet if there is still ammo on the player; shoots in specified direction.
-    private void shoot() {
+    public void shoot() {
         if (player.getAmmo() != 0) {
             Bullet bullet = new Bullet(player.getPositionX(), player.getPositionY(), player.getDirection());
             bullets.add(bullet);
@@ -250,7 +250,7 @@ public class GameData {
 
     // modifies: this
     //effects: resets the game state back to original.
-    private void restart() {
+    public void restart() {
         bullets.clear();
         enemies.clear();
         round = 0;
