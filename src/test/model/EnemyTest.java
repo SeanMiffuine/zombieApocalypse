@@ -62,8 +62,14 @@ public class EnemyTest {
 
     @Test
     public void testGetShotTrue() {
-        Bullet bullet = new Bullet(enemy.getPositionX(), enemy.getPositionY(), 1);
-        assertTrue(enemy.getShot(bullet));
+        Bullet bulletUp = new Bullet(enemy.getPositionX(), enemy.getPositionY(), 1);
+        assertTrue(enemy.getShot(bulletUp));
+        Bullet bulletDown = new Bullet(enemy.getPositionX(), enemy.getPositionY(), 2);
+        assertTrue(enemy.getShot(bulletDown));
+        Bullet bulletLeft = new Bullet(enemy.getPositionX(), enemy.getPositionY(), 3);
+        assertTrue(enemy.getShot(bulletLeft));
+        Bullet bulletRight = new Bullet(enemy.getPositionX(), enemy.getPositionY(), 4);
+        assertTrue(enemy.getShot(bulletRight));
     }
 
     @Test

@@ -45,7 +45,12 @@ class GameDataTest {
     }
 
     @Test
-    public void testDoInput() {
+    public void BulletOut() {
+
+    }
+
+    @Test
+    public void testDoInputM() {
         game.doInput("m");
         assertEquals(1, game.getBullets().size());
     }
@@ -110,8 +115,20 @@ class GameDataTest {
 
     @Test
     public void testPushDataGame() {
-        assertTrue(game.pushDataGame().equals("Enemy Total: " + game.getEnemies().size() + " Enemy Coords: "
-                + "\n" + "Flying Bullets Total: " + game.getBullets().size() + " Bullet Coords:"));
+        String enemyPositions = "";
+        String bulletPositions = "";
+
+        game.shoot();
+        game.spawn();
+        for (Enemy e : game.getEnemies()) {
+            enemyPositions += " X: " + e.getPositionX() + " Y: " + e.getPositionY() + " | ";
+        }
+        for (Bullet b : game.getBullets()) {
+            bulletPositions += " X: " + b.getPositionX() + " Y: " + b.getPositionY() + " | ";
+        }
+        assertTrue(game.pushDataGame().equals("Enemy Total: "+ game.getEnemies().size() + " Enemy Coords: " + enemyPositions
+                + "\n" + "Flying Bullets Total: " + game.getBullets().size() + " Bullet Coords:"
+                + bulletPositions));
     }
 
     @Test
