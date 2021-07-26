@@ -37,7 +37,7 @@ future!
 - start game and restart game over and over
 - walk around the map
 - view game information such as health, rounds, money, ammo
-- shoot weapon (pew pew)
-- view spawned enemies
+- shoot weapon (pew pew, multiple bullets added to game)
+- view spawned enemies (multiple enemies added to game)
 - eliminate enemies and get high score (in rounds)
 - lose when health reaches 0

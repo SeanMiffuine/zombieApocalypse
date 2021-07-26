@@ -11,13 +11,15 @@ public class Enemy {
     private int positionX;
     private int positionY;
 
+    // effects: constructs an enemy
     public Enemy() {
         this.speed = 5;
-        pickSpawn(positionX, positionY);
+        pickSpawn();
     }
 
+    // modifies: this
     // effects: spawn an enemy on a random side of the screen at random position
-    private void pickSpawn(int positionX, int positionY) {
+    private void pickSpawn() {
         Random rand = new Random();
         int side = rand.nextInt(4);
         if (side == 0) {
@@ -40,50 +42,42 @@ public class Enemy {
     public void chase(Player player) {
         if (this.positionX < player.getPositionX()) {
             positionX += speed;
-        } else {
+        } else if (this.positionX > player.getPositionX()) {
             positionX -= speed;
         }
         if (this.positionY < player.getPositionY()) {
             positionY += speed;
-        } else {
-            positionY -= speed;
+        } else if (this.positionY > player.getPositionY()) {
+            positionX -= speed;
         }
     }
 
+    // effects: returns true if the passed Bullet parameter is within range of the enemy,
+    //          representing that the enemy is shot and dead.
     public boolean getShot(Bullet bullet) {
-        if ((positionX + (SIZE / 2)) >= (bullet.getPositionX() - bullet.getSize())
-                && (positionX + (SIZE / 2)) <= (bullet.getPositionX() + bullet.getSize())) {
-            return true; //detect touching bullet from left
-        } else if ((positionX - (SIZE / 2)) <= (bullet.getPositionX() + bullet.getSize())
-                && (positionX - (SIZE / 2)) >= (bullet.getPositionX() - bullet.getSize())) {
-            return true; //detect touching bullet from right
-        } else if ((positionY + (SIZE / 2)) >= (bullet.getPositionY() - bullet.getSize())
-                && (positionY + (SIZE / 2)) <= (bullet.getPositionY() + bullet.getSize())) {
-            return true; //detect touching bullet from top
-        } else if ((positionY - (SIZE / 2)) >= (bullet.getPositionY() + bullet.getSize())
-                && (positionY - (SIZE / 2)) <= (bullet.getPositionY() - bullet.getSize())) {
-            return true; //detect touching bullet from bottom
-        } else {
-            return false;
-        }
+        return (positionX >= (bullet.getPositionX() - bullet.getSize()))
+                && (positionX <= (bullet.getPositionX() + bullet.getSize()))
+                && (positionY >= (bullet.getPositionY() - bullet.getSize()))
+                && (positionY <= (bullet.getPositionY() + bullet.getSize()));
 
     }
 
+    // effects: returns true if the passed Player parameter is within range of the enemy,
+    //          representing that the player got attacked by the enemy.
     public boolean hitPlayer(Player player) {
-        if ((positionX + (SIZE / 2)) >= (player.getPositionX() - player.getSize())
-                && (positionX + (SIZE / 2)) <= (player.getPositionX() + player.getSize())) {
-            return true; //detect touching player from left
-        } else if ((positionX - (SIZE / 2)) <= (player.getPositionX() + player.getSize())
-                && (positionX - (SIZE / 2)) >= (player.getPositionX() - player.getSize())) {
-            return true; //detect touching player from right
-        } else if ((positionY + (SIZE / 2)) >= (player.getPositionY() - player.getSize())
-                && (positionY + (SIZE / 2)) <= (player.getPositionY() + player.getSize())) {
-            return true; //detect touching player from top
-        } else if ((positionY - (SIZE / 2)) >= (player.getPositionY() + player.getSize())
-                && (positionY - (SIZE / 2)) <= (player.getPositionY() - player.getSize())) {
-            return true; //detect touching player from bottom
-        } else {
-            return false;
-        }
+        return (positionX >= (player.getPositionX() - player.getSize()))
+                && (positionX <= (player.getPositionX() + player.getSize()))
+                && (positionY >= (player.getPositionY() - player.getSize()))
+                && (positionY <= (player.getPositionY() + player.getSize()));
+    }
+
+    // effects: returns positionX
+    public int getPositionX() {
+        return positionX;
+    }
+
+    // effects: returns positionY
+    public int getPositionY() {
+        return positionY;
     }
 }

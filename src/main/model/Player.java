@@ -11,17 +11,18 @@ public class Player {
     private int speed;
     private int ammo;
     private int health;
-    private int direction; // up 1, down 2, left 3, right 4.
+    private int direction = 1; // up 1, down 2, left 3, right 4.
 
     // effects: constructs the player
     public Player() {
-        this.positionX = SIZE;
-        this.positionY = SIZE;
+        this.positionX = GameData.WINDOW_WIDTH / 2;
+        this.positionY = GameData.WINDOW_HEIGHT / 2;
         this.speed = 15;
-        this.ammo = 100;
+        this.ammo = 2;
         this.health = 100;
     }
 
+    /*
     // modifies: this
     // effects: take sin keycode and moves player accordingly
     public void playerMove(int keyCode) {
@@ -43,9 +44,31 @@ public class Player {
         }
         boundaryCheck();
     }
+     */
 
-    // !!!
-    // requires: ammo is not 0
+    // requires: string input of single character
+    // modifies: this
+    // effects: takes in input of WASD to move player accordingly.
+    public void playerMove(String input) {
+        if (input.equalsIgnoreCase("w")) {
+            moveUp();
+            this.direction = 1;
+        }
+        if (input.equalsIgnoreCase("s")) {
+            moveDown();
+            this.direction = 2;
+        }
+        if (input.equalsIgnoreCase("a")) {
+            moveLeft();
+            this.direction = 3;
+        }
+        if (input.equalsIgnoreCase("d")) {
+            moveRight();
+            this.direction = 4;
+        }
+        boundaryCheck();
+    }
+
     // modifies: this
     // effects: shoots bullet from player
     public void shoot() {
@@ -69,13 +92,13 @@ public class Player {
     // modifies: this
     // effects: moves player right
     public void moveRight() {
-        this.positionY += speed;
+        this.positionX += speed;
     }
 
     // modifies: this
     // effects: moves player left
     public void moveLeft() {
-        this.positionX += speed;
+        this.positionX -= speed;
     }
 
     // modifies: this
@@ -95,32 +118,44 @@ public class Player {
         }
     }
 
+    // modifies: this
+    // effects: decrease the player's health
     public void loseHealth() {
         this.health -= 20;
     }
 
+    // effects: returns true if health is less than or equal to 0
+    public boolean noHealth() {
+        return health <= 0;
+    }
+
+    // effects: returns positionX
     public int getPositionX() {
         return positionX;
     }
 
+    // effects: returns positionY
     public int getPositionY() {
         return positionY;
     }
 
+    // effects: returns direction
     public int getDirection() {
         return direction;
     }
 
+    // effects: returns ammo
     public int getAmmo() {
         return ammo;
     }
 
+    // effects: returns SIZE
     public int getSize() {
         return SIZE;
     }
 
-    public boolean noHealth() {
-        return health == 0;
+    // effects: returns health
+    public int getHealth() {
+        return health;
     }
-
 }
