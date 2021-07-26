@@ -67,9 +67,25 @@ public class EnemyTest {
     }
 
     @Test
-    public void testHitPlayer() {
+    public void testHitPlayerFalse() {
         Player player = new Player();
         assertFalse(enemy.hitPlayer(player));
+    }
+
+
+    @Test
+    public void testHitPlayerTrue() {
+        GameData game = new GameData();
+        for (int i = 0; i < 50; i++) {
+            if ((enemy.getPositionX() >= (game.getPlayer().getPositionX() - game.getPlayer().getSize()))
+                && (enemy.getPositionX() <= (game.getPlayer().getPositionX() + game.getPlayer().getSize()))
+                && (enemy.getPositionY() >= (game.getPlayer().getPositionY() - game.getPlayer().getSize()))
+                && (enemy.getPositionY() >= (game.getPlayer().getPositionY() - game.getPlayer().getSize()))) {
+                assertTrue(enemy.hitPlayer(game.getPlayer()));
+            }
+            game.update();
+        }
+
     }
 
 }

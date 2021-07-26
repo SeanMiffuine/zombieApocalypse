@@ -32,6 +32,17 @@ class GameDataTest {
         assertEquals(3, game.getEnemies().size());
         assertFalse(game.isGameOver());
     }
+    @Test
+    public void testUpdateGameOver() {
+        game.getPlayer().loseHealth();
+        game.getPlayer().loseHealth();
+        game.getPlayer().loseHealth();
+        game.getPlayer().loseHealth();
+        game.getPlayer().loseHealth();
+        game.setGameOver();
+        game.update();
+        assertTrue(game.isGameOver());
+    }
 
     @Test
     public void testDoInput() {
@@ -83,6 +94,35 @@ class GameDataTest {
         assertEquals(0, game.getEnemies().size());
         assertEquals(0, game.getBullets().size());
         assertFalse(game.isGameOver());
+    }
+
+    @Test
+    public void testGetPlayer() {
+        assertTrue(game.getPlayer() != null);
+    }
+
+    @Test
+    public void testPushDataPlayer() {
+        assertTrue(game.pushDataPlayer().equals("health: " + game.getPlayer().getHealth() + " ammo: "
+                + game.getPlayer().getAmmo() + " playerX: " + game.getPlayer().getPositionX()
+                + " playerY: " + game.getPlayer().getPositionY()));
+    }
+
+    @Test
+    public void testPushDataGame() {
+        assertTrue(game.pushDataGame().equals("Enemy Total: " + game.getEnemies().size() + " Enemy Coords: "
+                + "\n" + "Flying Bullets Total: " + game.getBullets().size() + " Bullet Coords:"));
+    }
+
+    @Test
+    public void testPushDataGameGameOver() {
+        game.getPlayer().loseHealth();
+        game.getPlayer().loseHealth();
+        game.getPlayer().loseHealth();
+        game.getPlayer().loseHealth();
+        game.getPlayer().loseHealth();
+        game.setGameOver();
+        assertTrue(game.pushDataGame().equals("Game over. P for restart."));
     }
 
 
