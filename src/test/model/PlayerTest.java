@@ -130,7 +130,6 @@ public class PlayerTest {
         assertEquals(player.getHealth(), 40);
     }
 
-
     @Test
     public void testNoHealth() {
         player.loseHealth();

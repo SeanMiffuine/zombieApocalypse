@@ -57,10 +57,13 @@ public class Enemy {
     // effects: returns true if the passed Bullet parameter is within range of the enemy,
     //          representing that the enemy is shot and dead.
     public boolean getShot(Bullet bullet) {
-        return (positionX >= (bullet.getPositionX() - bullet.getSize()))
+        if ((positionX >= (bullet.getPositionX() - bullet.getSize()))
                 && (positionX <= (bullet.getPositionX() + bullet.getSize()))
                 && (positionY >= (bullet.getPositionY() - bullet.getSize()))
-                && (positionY <= (bullet.getPositionY() + bullet.getSize()));
+                && (positionY <= (bullet.getPositionY() + bullet.getSize()))) {
+            return true;
+        }
+        return false;
 
     }
 
