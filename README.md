@@ -41,3 +41,7 @@ future!
 - view spawned enemies (multiple enemies added to game)
 - eliminate enemies and get high score (in rounds)
 - lose when health reaches 0
+
+- Save game state: round number, enemies, ammo, health, bullet list, zombie list
+- Reload game state upon opening the game
+

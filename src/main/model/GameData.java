@@ -18,6 +18,7 @@ public class GameData {
     private boolean gameOver;
     private Player player;
     private List<Bullet> bullets;
+    private List<Enemy> enemies;
 
     public void setBullets(List<Bullet> bullets) {
         this.bullets = bullets;
@@ -26,8 +27,6 @@ public class GameData {
     public void setEnemies(List<Enemy> enemies) {
         this.enemies = enemies;
     }
-
-    private List<Enemy> enemies;
 
     // effect: gets window width
     public int getWindowWidth() {
