@@ -72,7 +72,10 @@ public class EnemyTest {
         assertTrue(enemy.getShot(bulletRight));
         Bullet bulletOn = new Bullet(enemy.getPositionX(), enemy.getPositionY(), 1);
         assertTrue(enemy.getShot(bulletOn));
-
+        Bullet bulletEdge = new Bullet(enemy.getPositionX() + 5, enemy.getPositionY() + 5, 1);
+        assertTrue(enemy.getShot(bulletEdge));
+        Bullet bulletEdgeMinus = new Bullet(enemy.getPositionX() - 5, enemy.getPositionY() - 5, 1);
+        assertTrue(enemy.getShot(bulletEdgeMinus));
     }
 
     @Test
