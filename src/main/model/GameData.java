@@ -1,5 +1,9 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Saveable;
+
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +12,7 @@ import java.lang.Math;
 // Contains all of current game data. Updates according to user inputs from GameRun.
 // NOTE: some code is based off of material from class, e.g. the Space Invader Game.
 // https://github.students.cs.ubc.ca/CPSC210/B02-SpaceInvadersBase
-public class GameData {
+public class GameData implements Saveable {
     public static final int WINDOW_WIDTH = 250;
     public static final int WINDOW_HEIGHT = 250;
     public static final int BORDER = 50;
@@ -73,6 +77,19 @@ public class GameData {
         return enemies;
     }
 
+    public void setHealth(int health) {
+        this.player.setHealth(health);
+    }
+
+    public void setAmmo(int ammo) {
+        this.player.setAmmo(ammo);
+    }
+
+    public void setRound(int round) {
+        this.round = round;
+    }
+
+
     // effects: initializes the game data; Player, enemies, rounds, money, bullets in game, enemies in game.
     public GameData() {
         bullets = new ArrayList<>();
@@ -121,7 +138,7 @@ public class GameData {
                     + "\n" + "Flying Bullets Total: " + bullets.size() + " Bullet Coords:"
                     + bulletPositions;
         } else {
-            return "Game over. P for restart.";
+            return "Game over. L for restart.";
         }
     }
 
@@ -136,7 +153,7 @@ public class GameData {
             }
             player.playerMove(input);
         } else {
-            if (input.equalsIgnoreCase("p")) {
+            if (input.equalsIgnoreCase("l")) {
                 restart();
             }
         }
@@ -267,5 +284,26 @@ public class GameData {
         player = new Player();
     }
 
+    @Override
+    // effects: returns this data as a JSONObject
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("health", player.getHealth());
+        json.put("ammo", player.getAmmo());
+        json.put("round", this.round);
+        //json.put("enemies", enemiesJson());
+        return json;
+    }
+
+//   // effects: returns fresh list of enemies as a JSON array
+//    private JSONArray enemiesJson() {
+//
+//        JSONArray jsonArray = new JSONArray();
+//
+//        for (Enemy e : enemies) {
+//            jsonArray.put(e.toJson());
+//        }
+//        return jsonArray;
+//    }
 
 }

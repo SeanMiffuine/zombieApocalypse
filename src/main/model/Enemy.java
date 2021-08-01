@@ -1,5 +1,8 @@
 package model;
 
+import org.json.JSONObject;
+import persistence.Saveable;
+
 import java.util.Random;
 
 // Enemy that chases and attempts to kill player. Is killable by bullets.
@@ -92,4 +95,12 @@ public class Enemy {
     public int getSpeed() {
         return speed;
     }
+
+//   @Override
+//   public JSONObject toJson() {
+//       JSONObject json = new JSONObject();
+//       json.put("X", getPositionX());
+//       json.put("Y", getPositionY());
+//       return json;
+//    }
 }

@@ -99,7 +99,7 @@ class GameDataTest {
         game.getPlayer().loseHealth();
         game.getPlayer().loseHealth();
         game.setGameOver();
-        game.doInput("p");
+        game.doInput("l");
         assertEquals(250, game.getWindowWidth());
         assertEquals(250, game.getWindowHeight());
         assertEquals(50, game.getBorder());

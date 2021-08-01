@@ -18,7 +18,7 @@ public class Player {
         this.positionX = GameData.WINDOW_WIDTH / 2;
         this.positionY = GameData.WINDOW_HEIGHT / 2;
         this.speed = 15;
-        this.ammo = 3;
+        this.ammo = 10;
         this.health = 100;
     }
 
@@ -162,6 +162,14 @@ public class Player {
     // effects: returns speed
     public int getSpeed() {
         return speed;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
+    public void setAmmo(int ammo) {
+        this.ammo = ammo;
     }
 
 }

@@ -44,4 +44,5 @@ future!
 
 - Save game state: round number, enemies, ammo, health, bullet list, zombie list
 - Reload game state upon opening the game
+- Choose to start new game upon opening the game
 
