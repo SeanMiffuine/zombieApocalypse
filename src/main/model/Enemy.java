@@ -96,6 +96,7 @@ public class Enemy {
         return speed;
     }
 
+    //test
 //   @Override
 //   public JSONObject toJson() {
 //       JSONObject json = new JSONObject();
