@@ -18,12 +18,15 @@ public class JsonReader {
         this.address = source;
     }
 
+    // effects: read game data from file
     public GameData read() throws IOException {
         String jsonData = readFile(address);
         JSONObject jsonObject = new JSONObject(jsonData);
         return parseGameData(jsonObject);
     }
 
+    //modifies: this
+    //effects: reads json file
     private String readFile(String source) throws  IOException {
         StringBuilder contentBuilder = new StringBuilder();
 
@@ -33,6 +36,7 @@ public class JsonReader {
         return contentBuilder.toString();
     }
 
+    //effects: parses the game data
     private GameData parseGameData(JSONObject jsonObject) {
         GameData gd = new GameData();
         // setters ot new game data.
@@ -40,6 +44,8 @@ public class JsonReader {
         return gd;
     }
 
+    //modifies: game data
+    //effects: sets the game data
     private void setNewData(GameData gd, JSONObject jsonObject) {
         int health = jsonObject.getInt("health");
         int ammo = jsonObject.getInt("ammo");
@@ -54,6 +60,8 @@ public class JsonReader {
         }
     }
 
+    //modifies: game data
+    //effects: iterate through enemy list and
     private void addEnemy(GameData gd, JSONObject jsonObject) {
         int x = jsonObject.getInt("X");
         int y = jsonObject.getInt("Y");

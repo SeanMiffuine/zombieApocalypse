@@ -103,6 +103,7 @@ public class GameRun {
 
     }
 
+    //modifies: this
     //effects: loads the current game state.
     private void loadGameState() {
         try {

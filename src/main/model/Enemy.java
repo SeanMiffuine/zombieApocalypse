@@ -104,6 +104,7 @@ public class Enemy implements Saveable {
         return speed;
     }
 
+    //effects: enemy to json
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
