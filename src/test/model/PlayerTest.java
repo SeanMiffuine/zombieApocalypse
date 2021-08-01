@@ -34,6 +34,13 @@ public class PlayerTest {
     }
 
     @Test
+    public void NoAmmo() {
+        player.setAmmo(0);
+        player.shoot();
+        assertEquals(player.getAmmo(), 0);
+    }
+
+    @Test
     public void testPlayerMoveUp() {
         player.playerMove("w");
         assertEquals(player.getPositionY(), 110);

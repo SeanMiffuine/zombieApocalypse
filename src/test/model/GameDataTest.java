@@ -148,6 +148,13 @@ class GameDataTest {
     }
 
     @Test
+    public void testNoBullets() {
+        game.getPlayer().setAmmo(0);
+        game.shoot();
+        assertEquals(0, game.getBullets().size());
+    }
+
+    @Test
     public void testRestart() {
         game.restart();
         assertEquals(250, game.getWindowWidth());
