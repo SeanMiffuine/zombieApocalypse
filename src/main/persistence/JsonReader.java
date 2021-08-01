@@ -1,6 +1,8 @@
 package persistence;
 
+import model.Enemy;
 import model.GameData;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -45,5 +47,16 @@ public class JsonReader {
         gd.setHealth(health);
         gd.setAmmo(ammo);
         gd.setRound(round);
+        JSONArray jsonArray = jsonObject.getJSONArray("enemies");
+        for (Object json : jsonArray) {
+            JSONObject enemy = (JSONObject) json;
+            addEnemy(gd, enemy);
+        }
+    }
+
+    private void addEnemy(GameData gd, JSONObject jsonObject) {
+        int x = jsonObject.getInt("X");
+        int y = jsonObject.getInt("Y");
+        gd.addEnemy(new Enemy(x, y));
     }
 }

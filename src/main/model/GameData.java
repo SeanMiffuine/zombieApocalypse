@@ -77,18 +77,29 @@ public class GameData implements Saveable {
         return enemies;
     }
 
+    // modifies: this
+    // effect: sets health
     public void setHealth(int health) {
         this.player.setHealth(health);
     }
 
+    // modifies: this
+    // effect: sets ammo
     public void setAmmo(int ammo) {
         this.player.setAmmo(ammo);
     }
 
+    // modifies: this
+    // effect: sets round
     public void setRound(int round) {
         this.round = round;
     }
 
+    // modifies: this
+    // effects: inserts enemy into list
+    public void addEnemy(Enemy enemy) {
+        enemies.add(enemy);
+    }
 
     // effects: initializes the game data; Player, enemies, rounds, money, bullets in game, enemies in game.
     public GameData() {
@@ -291,19 +302,19 @@ public class GameData implements Saveable {
         json.put("health", player.getHealth());
         json.put("ammo", player.getAmmo());
         json.put("round", this.round);
-        //json.put("enemies", enemiesJson());
+        json.put("enemies", enemiesJson());
         return json;
     }
 
-//   // effects: returns fresh list of enemies as a JSON array
-//    private JSONArray enemiesJson() {
-//
-//        JSONArray jsonArray = new JSONArray();
-//
-//        for (Enemy e : enemies) {
-//            jsonArray.put(e.toJson());
-//        }
-//        return jsonArray;
-//    }
+   // effects: returns fresh list of enemies as a JSON array
+    private JSONArray enemiesJson() {
+
+        JSONArray jsonArray = new JSONArray();
+
+        for (Enemy e : enemies) {
+            jsonArray.put(e.toJson());
+        }
+        return jsonArray;
+    }
 
 }

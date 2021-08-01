@@ -6,7 +6,7 @@ import persistence.Saveable;
 import java.util.Random;
 
 // Enemy that chases and attempts to kill player. Is killable by bullets.
-public class Enemy {
+public class Enemy implements Saveable {
 
     public static final int SIZE = 10;
 
@@ -18,6 +18,14 @@ public class Enemy {
     public Enemy() {
         this.speed = 5;
         pickSpawn();
+    }
+
+    // modifies: this
+    // effects: overloaded enemy object
+    public Enemy(int positionX, int positionY) {
+        this.speed = 5;
+        this.positionX = positionX;
+        this.positionY = positionY;
     }
 
     // modifies: this
@@ -96,12 +104,11 @@ public class Enemy {
         return speed;
     }
 
-    //test
-//   @Override
-//   public JSONObject toJson() {
-//       JSONObject json = new JSONObject();
-//       json.put("X", getPositionX());
-//       json.put("Y", getPositionY());
-//       return json;
-//    }
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("X", getPositionX());
+        json.put("Y", getPositionY());
+        return json;
+    }
 }
