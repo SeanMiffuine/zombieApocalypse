@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
+//writes to the json file for save state
 public class JsonWriter {
 
     private static final int TAB = 4;
