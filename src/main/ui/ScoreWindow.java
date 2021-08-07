@@ -10,6 +10,8 @@ public class ScoreWindow extends JPanel {
     private JLabel round;
     private JLabel ammo;
     private JLabel health;
+    private JLabel flyingBullets;
+    private JLabel enemiesLeft;
     private static final int WIDTH = 100;
     private static final int HEIGHT = 50;
 
@@ -22,18 +24,31 @@ public class ScoreWindow extends JPanel {
         ammo.setPreferredSize(new Dimension(WIDTH, HEIGHT));
         health = new JLabel("Health: " + game.getPlayer().getHealth());
         health.setPreferredSize(new Dimension(WIDTH, HEIGHT));
-        add(Box.createHorizontalStrut(10));
+        flyingBullets = new JLabel("Bullets flying: " + game.getBullets().size());
+        flyingBullets.setPreferredSize(new Dimension(WIDTH, HEIGHT));
+        enemiesLeft = new JLabel("Enemies left: " + game.getEnemies().size());
+        enemiesLeft.setPreferredSize(new Dimension(WIDTH, HEIGHT));
+
+        add(Box.createHorizontalStrut(5));
         add(round);
-        add(Box.createHorizontalStrut(10));
+        add(Box.createHorizontalStrut(5));
         add(ammo);
-        add(Box.createHorizontalStrut(10));
+        add(Box.createHorizontalStrut(5));
         add(health);
+        add(Box.createHorizontalStrut(5));
+        add(flyingBullets);
+        add(Box.createHorizontalStrut(5));
+        add(enemiesLeft);
+
     }
 
     public void update() {
         round.setText("Rounds: " + game.getRound());
         ammo.setText("Ammo: " + game.getPlayer().getAmmo());
         health.setText("Health: " + game.getPlayer().getHealth());
+        flyingBullets.setText("Bullets flying: " + game.getBullets().size());
+        enemiesLeft.setText("Enemies left: " + game.getEnemies().size());
+
         repaint();
     }
 

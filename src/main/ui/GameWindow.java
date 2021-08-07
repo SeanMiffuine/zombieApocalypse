@@ -15,10 +15,11 @@ import java.io.IOException;
 public class GameWindow extends JPanel {
 
     private GameData game;
+    private String gameOverString = "Game Over: N for New Game";
 
     public GameWindow(GameData game) {
         setPreferredSize(new Dimension(GameData.WINDOW_WIDTH, GameData.WINDOW_HEIGHT));
-        setBackground(Color.BLACK);
+        setBackground(new Color(10, 40, 30));
         this.game = game;
     }
 
@@ -26,9 +27,9 @@ public class GameWindow extends JPanel {
     protected void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
         drawGame(graphics);
-        //if (game.isGameOver()) {
-        //    displayGameOver(graphics);
-        //}
+        if (game.isGameOver()) {
+            displayGameOver(graphics);
+        }
     }
 
     private void drawGame(Graphics graphics) {
@@ -78,14 +79,22 @@ public class GameWindow extends JPanel {
 
     private void drawBullet(Graphics graphics, Bullet bullet) {
         Color graphicsColor = graphics.getColor();
-        graphics.setColor(new Color(80, 100, 40));
+        graphics.setColor(new Color(200, 200, 40));
         graphics.fillRect(bullet.getPositionX() - Bullet.SIZE / 2,
                 bullet.getPositionY() - Bullet.SIZE / 2, Bullet.SIZE,
                 Bullet.SIZE);
         graphics.setColor(graphicsColor);
     }
 
-    //private void displayGameOver(Graphics graphics) {
-    //
-    //}
+    private void displayGameOver(Graphics graphics) {
+        Color color = graphics.getColor();
+        graphics.setColor(new Color(230, 230, 230));
+        graphics.setFont(new Font("Consolas", 15, 30));
+        FontMetrics fontMetrics = graphics.getFontMetrics();
+        int width = fontMetrics.stringWidth(gameOverString);
+        graphics.drawString(gameOverString, (game.WINDOW_WIDTH - width) / 2, game.WINDOW_HEIGHT / 2);
+
+
+
+    }
 }
