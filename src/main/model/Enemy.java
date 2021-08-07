@@ -16,14 +16,14 @@ public class Enemy implements Saveable {
 
     // effects: constructs an enemy
     public Enemy() {
-        this.speed = 5;
+        this.speed = 3;
         pickSpawn();
     }
 
     // modifies: this
     // effects: overloaded enemy object
     public Enemy(int positionX, int positionY) {
-        this.speed = 5;
+        this.speed = 3;
         this.positionX = positionX;
         this.positionY = positionY;
     }

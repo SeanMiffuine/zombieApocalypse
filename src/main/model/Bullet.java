@@ -4,7 +4,7 @@ package model;
 public class Bullet {
 
     public static final int SIZE = 5;
-    public static final int SPEED = 20;
+    public static final int SPEED = 7;
     private int positionX;
     private int positionY;
     private int direction; // up 1, down 2, left 3, right 4.

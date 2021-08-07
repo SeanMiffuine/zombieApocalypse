@@ -47,69 +47,69 @@ class GameDataTest {
         assertTrue(game.isGameOver());
     }
 
-    @Test
-    public void testDoInputM() {
-        game.doInput("m");
-        assertEquals(1, game.getBullets().size());
-        assertEquals(2, game.getPlayer().getAmmo());
-    }
-
-    @Test
-    public void testDoInputW() {
-        game.doInput("w");
-        assertEquals(110, game.getPlayer().getPositionY());
-    }
-
-    @Test
-    public void testDoInputS() {
-        game.doInput("s");
-        assertEquals(140, game.getPlayer().getPositionY());
-    }
-
-    @Test
-    public void testDoInputA() {
-        game.doInput("a");
-        assertEquals(110, game.getPlayer().getPositionX());
-    }
-
-    @Test
-    public void testDoInputD() {
-        game.doInput("d");
-        assertEquals(140, game.getPlayer().getPositionX());
-    }
-
-    @Test
-    public void testDoInputPFalse() {
-        game.getPlayer().loseHealth();
-        game.getPlayer().loseHealth();
-        game.getPlayer().loseHealth();
-        game.getPlayer().loseHealth();
-        game.getPlayer().loseHealth();
-        game.setGameOver();
-        game.doInput("y");
-        assertTrue(game.isGameOver());
-        assertEquals(0, game.getPlayer().getHealth());
-    }
-
-    @Test
-    public void testDoInputP() {
-        game.getPlayer().loseHealth();
-        game.getPlayer().loseHealth();
-        game.getPlayer().loseHealth();
-        game.getPlayer().loseHealth();
-        game.getPlayer().loseHealth();
-        game.setGameOver();
-        game.doInput("l");
-        assertEquals(250, game.getWindowWidth());
-        assertEquals(250, game.getWindowHeight());
-        assertEquals(50, game.getBorder());
-        assertEquals(0, game.getRound());
-        assertEquals(0, game.getMoney());
-        assertEquals(100, game.getPlayer().getHealth());
-        assertEquals(0, game.getEnemies().size());
-        assertEquals(0, game.getBullets().size());
-        assertFalse(game.isGameOver());
-    }
+//    @Test
+//    public void testDoInputM() {
+//        game.doInput("m");
+//        assertEquals(1, game.getBullets().size());
+//        assertEquals(2, game.getPlayer().getAmmo());
+//    }
+//
+//    @Test
+//    public void testDoInputW() {
+//        game.doInput("w");
+//        assertEquals(110, game.getPlayer().getPositionY());
+//    }
+//
+//    @Test
+//    public void testDoInputS() {
+//        game.doInput("s");
+//        assertEquals(140, game.getPlayer().getPositionY());
+//    }
+//
+//    @Test
+//    public void testDoInputA() {
+//        game.doInput("a");
+//        assertEquals(110, game.getPlayer().getPositionX());
+//    }
+//
+//    @Test
+//    public void testDoInputD() {
+//        game.doInput("d");
+//        assertEquals(140, game.getPlayer().getPositionX());
+//    }
+//
+//    @Test
+//    public void testDoInputPFalse() {
+//        game.getPlayer().loseHealth();
+//        game.getPlayer().loseHealth();
+//        game.getPlayer().loseHealth();
+//        game.getPlayer().loseHealth();
+//        game.getPlayer().loseHealth();
+//        game.setGameOver();
+//        game.doInput("y");
+//        assertTrue(game.isGameOver());
+//        assertEquals(0, game.getPlayer().getHealth());
+//    }
+//
+//    @Test
+//    public void testDoInputP() {
+//        game.getPlayer().loseHealth();
+//        game.getPlayer().loseHealth();
+//        game.getPlayer().loseHealth();
+//        game.getPlayer().loseHealth();
+//        game.getPlayer().loseHealth();
+//        game.setGameOver();
+//        game.doInput("l");
+//        assertEquals(250, game.getWindowWidth());
+//        assertEquals(250, game.getWindowHeight());
+//        assertEquals(50, game.getBorder());
+//        assertEquals(0, game.getRound());
+//        assertEquals(0, game.getMoney());
+//        assertEquals(100, game.getPlayer().getHealth());
+//        assertEquals(0, game.getEnemies().size());
+//        assertEquals(0, game.getBullets().size());
+//        assertFalse(game.isGameOver());
+//    }
 
     @Test
     public void testSpawn() {

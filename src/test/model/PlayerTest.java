@@ -40,33 +40,33 @@ public class PlayerTest {
         assertEquals(player.getAmmo(), 0);
     }
 
-    @Test
-    public void testPlayerMoveUp() {
-        player.playerMove("w");
-        assertEquals(player.getPositionY(), 110);
-        assertEquals(player.getDirection(), 1);
-    }
-
-    @Test
-    public void testPlayerMoveDown() {
-        player.playerMove("s");
-        assertEquals(player.getPositionY(), 140);
-        assertEquals(player.getDirection(), 2);
-    }
-
-    @Test
-    public void testPlayerMoveLeft() {
-        player.playerMove("a");
-        assertEquals(player.getPositionX(), 110);
-        assertEquals(player.getDirection(), 3);
-    }
-
-    @Test
-    public void testPlayerMoveRight() {
-        player.playerMove("d");
-        assertEquals(player.getPositionX(), 140);
-        assertEquals(player.getDirection(), 4);
-    }
+//    @Test
+//    public void testPlayerMoveUp() {
+//        player.playerMove("w");
+//        assertEquals(player.getPositionY(), 110);
+//        assertEquals(player.getDirection(), 1);
+//    }
+//
+//    @Test
+//    public void testPlayerMoveDown() {
+//        player.playerMove("s");
+//        assertEquals(player.getPositionY(), 140);
+//        assertEquals(player.getDirection(), 2);
+//    }
+//
+//    @Test
+//    public void testPlayerMoveLeft() {
+//        player.playerMove("a");
+//        assertEquals(player.getPositionX(), 110);
+//        assertEquals(player.getDirection(), 3);
+//    }
+//
+//    @Test
+//    public void testPlayerMoveRight() {
+//        player.playerMove("d");
+//        assertEquals(player.getPositionX(), 140);
+//        assertEquals(player.getDirection(), 4);
+//    }
 
     @Test
     public void testMoveUp() {

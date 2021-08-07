@@ -17,12 +17,12 @@ public class Player {
     public Player() {
         this.positionX = GameData.WINDOW_WIDTH / 2;
         this.positionY = GameData.WINDOW_HEIGHT / 2;
-        this.speed = 15;
+        this.speed = 25;
         this.ammo = 10;
         this.health = 100;
     }
 
-    /*
+
     // modifies: this
     // effects: take sin keycode and moves player accordingly
     public void playerMove(int keyCode) {
@@ -44,8 +44,8 @@ public class Player {
         }
         boundaryCheck();
     }
-     */
 
+/*
     // requires: string input of single character
     // modifies: this
     // effects: takes in input of WASD to move player accordingly.
@@ -68,6 +68,7 @@ public class Player {
         }
         boundaryCheck();
     }
+*/
 
     // modifies: this
     // effects: shoots bullet from player
