@@ -3,7 +3,8 @@ package ui;
 import model.GameData;
 import persistence.JsonReader;
 import persistence.JsonWriter;
-import javax.swing.JFrame;
+
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -38,6 +39,7 @@ public class GameRun extends JFrame {
         jsonWriter = new JsonWriter(ADDRESS);
         jsonReader = new JsonReader(ADDRESS);
         game = new GameData();
+        newOrLoad();
         gameWindow = new GameWindow(game);
         scoreWindow = new ScoreWindow(game);
         add(gameWindow);
@@ -46,7 +48,7 @@ public class GameRun extends JFrame {
         addKeyListener(new KeyHandler());
         centreOnScreen();
         setVisible(true);
-        game.setGameStart();
+        // game menu new or load !!!
         gameRunLoop();
     }
 
@@ -75,6 +77,27 @@ public class GameRun extends JFrame {
 //            game = new GameData();
 //        }
 //    }
+
+    private void newOrLoad() {
+        Boolean menu = true;
+        int choice = newOrLoadButton();
+        while (menu) {
+            if (choice == 0) {
+                //null
+                menu = false;
+            } else if (choice == 1) {
+                loadGameState();
+                menu = false;
+            }
+        }
+        game.setGameStart();
+    }
+
+    private int newOrLoadButton() {
+        String[] options = new String[] {"New", "Load"};
+        return JOptionPane.showOptionDialog(null, "Load Game or New Game?", ":)",
+                JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, options, options[0]);
+    }
 
     // modifies: this
     // effects: Runs main game loop. Updates game according to inputs and time elapsed.
@@ -142,10 +165,15 @@ public class GameRun extends JFrame {
             jsonWriter.write(game);
             jsonWriter.close();
             System.out.println("Save successful! ");
+            saveButtonConfirm();
         } catch (FileNotFoundException e) {
             System.out.println("Save Failed. ");
         }
+    }
 
+    private void saveButtonConfirm() {
+        JOptionPane.showMessageDialog(null, "Save Success!", "Save",
+                JOptionPane.INFORMATION_MESSAGE);
     }
 
     //modifies: this
@@ -172,11 +200,9 @@ public class GameRun extends JFrame {
         public void keyPressed(KeyEvent e) {
             if (e.getKeyCode() == KeyEvent.VK_N && game.isGameOver()) {
                 game.restart();
+            } else if (e.getKeyCode() == KeyEvent.VK_P && !game.isGameOver()) {
+                saveGameState();
             }
-//            } else if (e.getKeyCode() == KeyEvent.VK_L && game.isGameOver()) {
-//                game.restart();
-//                loadGameState();
-//            }
             game.keyPressed(e.getKeyCode());
         }
     }
