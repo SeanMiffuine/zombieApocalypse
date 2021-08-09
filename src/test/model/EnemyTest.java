@@ -7,10 +7,16 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class EnemyTest {
     private Enemy enemy;
+    private Enemy enemyB;
+    private Enemy enemyC;
 
     @BeforeEach
     public void setUp() {
         enemy = new Enemy();
+        enemyB = new Enemy();
+        enemyC = new Enemy();
+
+
     }
 
     @Test
@@ -87,12 +93,24 @@ public class EnemyTest {
     @Test
     public void testHitPlayerTrue() {
         GameData game = new GameData();
-        for (int i = 0; i < 50; i++) {
+        for (int i = 0; i < 100; i++) {
             if ((enemy.getPositionX() >= (game.getPlayer().getPositionX() - game.getPlayer().getSize()))
                 && (enemy.getPositionX() <= (game.getPlayer().getPositionX() + game.getPlayer().getSize()))
                 && (enemy.getPositionY() >= (game.getPlayer().getPositionY() - game.getPlayer().getSize()))
                 && (enemy.getPositionY() >= (game.getPlayer().getPositionY() - game.getPlayer().getSize()))) {
                 assertTrue(enemy.hitPlayer(game.getPlayer()));
+            }
+            if ((enemyB.getPositionX() >= (game.getPlayer().getPositionX() - game.getPlayer().getSize()))
+                    && (enemyB.getPositionX() <= (game.getPlayer().getPositionX() + game.getPlayer().getSize()))
+                    && (enemyB.getPositionY() >= (game.getPlayer().getPositionY() - game.getPlayer().getSize()))
+                    && (enemyB.getPositionY() >= (game.getPlayer().getPositionY() - game.getPlayer().getSize()))) {
+                assertTrue(enemyB.hitPlayer(game.getPlayer()));
+            }
+            if ((enemyC.getPositionX() >= (game.getPlayer().getPositionX() - game.getPlayer().getSize()))
+                    && (enemyC.getPositionX() <= (game.getPlayer().getPositionX() + game.getPlayer().getSize()))
+                    && (enemyC.getPositionY() >= (game.getPlayer().getPositionY() - game.getPlayer().getSize()))
+                    && (enemyC.getPositionY() >= (game.getPlayer().getPositionY() - game.getPlayer().getSize()))) {
+                assertTrue(enemyC.hitPlayer(game.getPlayer()));
             }
             game.update();
         }

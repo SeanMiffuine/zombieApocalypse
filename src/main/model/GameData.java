@@ -106,10 +106,6 @@ public class GameData implements Saveable {
             player.shoot();
             shoot();
             shootSound();
-        } else if (keyCode == KeyEvent.VK_P && gameOver) {
-            restart();
-        } else if (keyCode == KeyEvent.VK_ESCAPE) {
-            System.exit(0);
         } else {
             player.playerMove(keyCode);
         }

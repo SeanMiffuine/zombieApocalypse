@@ -1,8 +1,10 @@
 package model;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -111,6 +113,18 @@ class GameDataTest {
 //        assertEquals(0, game.getBullets().size());
 //        assertFalse(game.isGameOver());
 //    }
+
+    @Test
+    public void testKeyPressSpace() {
+        game.keyPressed(KeyEvent.VK_SPACE);
+        assertEquals(game.getBullets().size(), 1);
+    }
+
+    @Test
+    public void testKeyPressRestart() {
+        game.keyPressed(KeyEvent.VK_W);
+        assertEquals(game.getPlayer().getPositionY(), 265);
+    }
 
     @Test
     public void testSpawn() {
@@ -223,6 +237,15 @@ class GameDataTest {
 //    }
 
     @Test
+    public void testPlayerGetHit() {
+        List<Enemy> enemies = new ArrayList<Enemy>();
+        enemies.add(new Enemy(400, 290));
+        game.setEnemies(enemies);
+        game.playerGetHit();
+        assertTrue(enemies.isEmpty());
+    }
+
+    @Test
     public void testEnemyGetHit() {
         List<Enemy> enemies = new ArrayList<Enemy>();
         enemies.add(new Enemy());
@@ -255,6 +278,11 @@ class GameDataTest {
         assertEquals(game.getBullets().get(0).getPositionY(), 283);
     }
 
+    @Test
+    public void testGameStart() {
+        game.setGameStart();
+        assertFalse(game.isGameOver());
+    }
 
 
 }
