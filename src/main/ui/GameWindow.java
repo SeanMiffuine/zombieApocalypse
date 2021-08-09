@@ -12,7 +12,7 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
-// Examples and inspiration from previous space invader game seen in lecture
+// Examples and inspiration from previous space invader game seen in lecture.
 // https://github.students.cs.ubc.ca/CPSC210/B02-SpaceInvadersBase
 //the graphics display of the game window.
 public class GameWindow extends JPanel {

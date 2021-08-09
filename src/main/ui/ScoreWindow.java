@@ -5,7 +5,7 @@ import model.GameData;
 import javax.swing.*;
 import java.awt.*;
 
-// Examples and inspiration from previous space invader game seen in lecture
+// Examples and inspiration from previous space invader game seen in lecture.
 // https://github.students.cs.ubc.ca/CPSC210/B02-SpaceInvadersBase
 //displays data on the GUI relating to score; health, ammo, zombies currently, round level, bullets on board.
 public class ScoreWindow extends JPanel {
