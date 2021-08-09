@@ -93,7 +93,7 @@ public class EnemyTest {
     @Test
     public void testHitPlayerTrue() {
         GameData game = new GameData();
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 150; i++) {
             if ((enemy.getPositionX() >= (game.getPlayer().getPositionX() - game.getPlayer().getSize()))
                 && (enemy.getPositionX() <= (game.getPlayer().getPositionX() + game.getPlayer().getSize()))
                 && (enemy.getPositionY() >= (game.getPlayer().getPositionY() - game.getPlayer().getSize()))
