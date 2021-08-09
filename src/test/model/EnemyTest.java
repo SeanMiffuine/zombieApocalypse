@@ -15,7 +15,7 @@ public class EnemyTest {
 
     @Test
     public void testConstruct() {
-        assertEquals(enemy.getSpeed(), 5);
+        assertEquals(enemy.getSpeed(), 3);
         //testing random spawn
         assertTrue(enemy.getPositionX() == 0 || enemy.getPositionX() == GameData.WINDOW_WIDTH
                 || (enemy.getPositionX() >= 0 && enemy.getPositionX() < GameData.WINDOW_WIDTH ));

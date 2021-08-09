@@ -53,32 +53,32 @@ public class GameData implements Saveable {
         }
     }
 
-    // effects: returns data relating to the player object
-    public String pushDataPlayer() {
-        return "health: " + player.getHealth() + " ammo: " + player.getAmmo()
-                + " playerX: " + player.getPositionX() + " playerY: " + player.getPositionY();
-    }
-
-    // effects: returns data relating to GameData
-    public String pushDataGame() {
-        String enemyPositions = "";
-        String bulletPositions = "";
-
-        if (!gameOver) {
-            for (Enemy e : enemies) {
-                enemyPositions += " X: " + e.getPositionX() + " Y: " + e.getPositionY() + " | ";
-            }
-            for (Bullet b : bullets) {
-                bulletPositions += " X: " + b.getPositionX() + " Y: " + b.getPositionY() + " | ";
-            }
-
-            return "Enemy Total: " + enemies.size() + " Enemy Coords: " + enemyPositions
-                    + "\n" + "Flying Bullets Total: " + bullets.size() + " Bullet Coords:"
-                    + bulletPositions;
-        } else {
-            return "Game over. L for restart.";
-        }
-    }
+//    // effects: returns data relating to the player object
+//    public String pushDataPlayer() {
+//        return "health: " + player.getHealth() + " ammo: " + player.getAmmo()
+//                + " playerX: " + player.getPositionX() + " playerY: " + player.getPositionY();
+//    }
+//
+//    // effects: returns data relating to GameData
+//    public String pushDataGame() {
+//        String enemyPositions = "";
+//        String bulletPositions = "";
+//
+//        if (!gameOver) {
+//            for (Enemy e : enemies) {
+//                enemyPositions += " X: " + e.getPositionX() + " Y: " + e.getPositionY() + " | ";
+//            }
+//            for (Bullet b : bullets) {
+//                bulletPositions += " X: " + b.getPositionX() + " Y: " + b.getPositionY() + " | ";
+//            }
+//
+//            return "Enemy Total: " + enemies.size() + " Enemy Coords: " + enemyPositions
+//                    + "\n" + "Flying Bullets Total: " + bullets.size() + " Bullet Coords:"
+//                    + bulletPositions;
+//        } else {
+//            return "Game over. L for restart.";
+//        }
+//    }
 
 //    // requires: single character input string
 //    // modifies: this

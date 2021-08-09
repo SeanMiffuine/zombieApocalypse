@@ -20,28 +20,28 @@ public class BulletTest {
     public void testBulletMoveUp() {
         bullet = new Bullet(125, 125, 1);
         bullet.bulletMove();
-        assertEquals(bullet.getPositionY(), 105);
+        assertEquals(bullet.getPositionY(), 118);
     }
 
     @Test
     public void testBulletMoveDown() {
         bullet = new Bullet(125, 125, 2);
         bullet.bulletMove();
-        assertEquals(bullet.getPositionY(), 145);
+        assertEquals(bullet.getPositionY(), 132);
     }
 
     @Test
     public void testBulletMoveLeft() {
         bullet = new Bullet(125, 125, 3);
         bullet.bulletMove();
-        assertEquals(bullet.getPositionX(), 105);
+        assertEquals(bullet.getPositionX(), 118);
     }
 
     @Test
     public void testBulletMoveRight() {
         bullet = new Bullet(125, 125, 4);
         bullet.bulletMove();
-        assertEquals(bullet.getPositionX(), 145);
+        assertEquals(bullet.getPositionX(), 132);
     }
 
     @Test
@@ -56,7 +56,7 @@ public class BulletTest {
     @Test
     public void testBoundaryDown() {
         bullet = new Bullet(125, 125, 2);
-        for (int i = 0; i < 25; i++) {
+        for (int i = 0; i < 100; i++) {
             bullet.bulletMove();
         }
         assertTrue(bullet.bulletOutOfBounds());
@@ -74,7 +74,7 @@ public class BulletTest {
     @Test
     public void testBoundaryRight() {
         bullet = new Bullet(125, 125, 4);
-        for (int i = 0; i < 25; i++) {
+        for (int i = 0; i < 100; i++) {
             bullet.bulletMove();
         }
         assertTrue(bullet.bulletOutOfBounds());
@@ -89,7 +89,7 @@ public class BulletTest {
     @Test
     public void testGetSpeed() {
         bullet = new Bullet(125, 125, 4);
-        assertEquals(bullet.getSpeed(), 20);
+        assertEquals(bullet.getSpeed(), 7);
     }
 
 }
