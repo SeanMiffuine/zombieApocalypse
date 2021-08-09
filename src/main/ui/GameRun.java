@@ -78,6 +78,8 @@ public class GameRun extends JFrame {
 //        }
 //    }
 
+    //modifies: this
+    //effects: picks either new or loaded game
     private void newOrLoad() {
         Boolean menu = true;
         int choice = newOrLoadButton();
@@ -93,9 +95,10 @@ public class GameRun extends JFrame {
         game.setGameStart();
     }
 
+    //effects: pop up window to pick either new or loaded game
     private int newOrLoadButton() {
         String[] options = new String[] {"New", "Load"};
-        return JOptionPane.showOptionDialog(null, "Load Game or New Game?", ":)",
+        return JOptionPane.showOptionDialog(null, "Load Game or New Game?", "Zombies Game",
                 JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, options, options[0]);
     }
 
@@ -158,6 +161,7 @@ public class GameRun extends JFrame {
 //        System.out.println(game.pushDataGame());
 //    }
 
+    //modifies: this
     //effects: saves the current game state
     private void saveGameState() {
         try {
@@ -171,6 +175,7 @@ public class GameRun extends JFrame {
         }
     }
 
+    //effects: displays a confirmation window that the save attempt was successful
     private void saveButtonConfirm() {
         JOptionPane.showMessageDialog(null, "Save Success!", "Save",
                 JOptionPane.INFORMATION_MESSAGE);
@@ -188,6 +193,8 @@ public class GameRun extends JFrame {
         }
     }
 
+    //modifies: this
+    //effects: centres text on middle of window
     private void centreOnScreen() {
         Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
         setLocation((screen.width - getWidth()) / 2, (screen.height - getHeight()) / 2);

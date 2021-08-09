@@ -177,7 +177,7 @@ public class GameData implements Saveable {
                     player.setAmmo(player.getAmmo() + 2);
                     deadEnemies.add(e);
                     shotBullets.add(b);
-                    enemyDieSound();
+                    //enemyDieSound();
                 }
             }
         }
@@ -185,19 +185,18 @@ public class GameData implements Saveable {
         bullets.removeAll(shotBullets);
     }
 
-    // effects: plays a sound when player loses health
-    public void enemyDieSound() {
-        File sound = new File("data/die.wav");
-        try {
-            Clip clip = AudioSystem.getClip();
-            clip.open(AudioSystem.getAudioInputStream(sound));
-            clip.start();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-    }
-
+//    // effects: plays a sound when player loses health
+//    public void enemyDieSound() {
+//        File sound = new File("data/die.wav");
+//        try {
+//            Clip clip = AudioSystem.getClip();
+//            clip.open(AudioSystem.getAudioInputStream(sound));
+//            clip.start();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//
+//    }
 
     // effects: returns true if all enemies have been eliminated.
     public boolean nextRound() {
@@ -289,10 +288,12 @@ public class GameData implements Saveable {
         return jsonArray;
     }
 
+    // effect: gets list of bullets
     public void setBullets(List<Bullet> bullets) {
         this.bullets = bullets;
     }
 
+    // effect: gets list of enemies
     public void setEnemies(List<Enemy> enemies) {
         this.enemies = enemies;
     }

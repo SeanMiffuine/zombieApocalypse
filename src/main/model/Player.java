@@ -165,10 +165,14 @@ public class Player {
         return speed;
     }
 
+    //modifies: this
+    // effects: sets health
     public void setHealth(int health) {
         this.health = health;
     }
 
+    //modifies: this
+    // effects: sets ammo
     public void setAmmo(int ammo) {
         this.ammo = ammo;
     }
