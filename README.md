@@ -1,6 +1,11 @@
 # CPSC 210 Project: Demon Defender Game
 #### Sean Tang (Snake z7q8w)
 
+# CONTROLS: 
+- WASD to move
+- Space to shoot
+- P to save
+- N to restart game
 
 ### *Project Rundown*
 
@@ -58,4 +63,15 @@ game will print in the console.
 
 For testing, in the GameDataTest class, there are two test methods: testUpdate() and testUpdateGameOver(). 
 testUpdate() runs update without expecting GameOver exception.
-testUpdateGameOver runes update() when game is over, throwing a GameOver exception.
+testUpdateGameOver runs update() when game is over, throwing a GameOver exception.
+
+
+## Phase 4: Task 3
+
+The UML diagram of my overall project design is fairly straightforward. In my opinion, I've kept most data fairly organized
+in an easily readible/understandable manner. If I had more time and a chance to refactor my work, there are some changes I 
+would definitely make. The input system, while mostly remaining in GUI, gets passed along many classes to determine a 
+correct input. Perhaps refactoring to it's own class would make it more neat. Another possible change is the GameData class.
+The class itself handles many responsibilities, such as making sounds, updating game data, saving game, hit detections, etc.
+A nice serperation for a unique class for each responsibility can add cohesion, making it easier to understand and debug
+in the future.

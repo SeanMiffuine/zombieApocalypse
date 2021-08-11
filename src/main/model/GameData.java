@@ -12,7 +12,6 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.lang.Math;
-import java.util.SortedMap;
 
 // Contains all of current game data. Updates according to user inputs from GameRun.
 // NOTE: some code is based off of material from class, e.g. the Space Invader Game.
