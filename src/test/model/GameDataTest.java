@@ -1,5 +1,6 @@
 package model;
 
+import exception.GameOverException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -30,14 +31,21 @@ class GameDataTest {
         assertTrue(game.isGameOver());
     }
 
+    //test exception not expected
     @Test
     public void testUpdate() {
-        game.update();
-        assertEquals(0, game.getRound());
-        assertEquals(0, game.getEnemies().size());
-        assertTrue(game.isGameOver());
+        game.setGameStart();
+        try {
+            game.update();
+        } catch (GameOverException e) {
+            fail("Not supposed to happen");
+        }
+        assertEquals(1, game.getRound());
+        assertEquals(3, game.getEnemies().size());
+        assertFalse(game.isGameOver());
     }
 
+    //test exception expected
     @Test
     public void testUpdateGameOver() {
         game.getPlayer().loseHealth();
@@ -46,8 +54,13 @@ class GameDataTest {
         game.getPlayer().loseHealth();
         game.getPlayer().loseHealth();
         game.setGameOver();
-        game.update();
+        try {
+            game.update();
+        } catch (GameOverException e) {
+            System.out.printf("Game Over expected");
+        }
         assertTrue(game.isGameOver());
+
     }
 
 //    @Test
@@ -180,10 +193,13 @@ class GameDataTest {
         assertEquals(0, game.getEnemies().size());
         assertEquals(0, game.getBullets().size());
         assertFalse(game.isGameOver());
-
-        game.update();
-        game.update();
-        game.update();
+        try {
+            game.update();
+            game.update();
+            game.update();
+        } catch (GameOverException e) {
+            fail("Not supposed to fail");
+        }
         game.restart();
         assertEquals(800, game.getWindowWidth());
         assertEquals(580, game.getWindowHeight());

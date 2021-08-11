@@ -2,6 +2,7 @@ package model;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import exception.GameOverException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -93,6 +94,7 @@ public class EnemyTest {
     @Test
     public void testHitPlayerTrue() {
         GameData game = new GameData();
+        game.setGameStart();
         for (int i = 0; i < 150; i++) {
             if ((enemy.getPositionX() >= (game.getPlayer().getPositionX() - game.getPlayer().getSize()))
                 && (enemy.getPositionX() <= (game.getPlayer().getPositionX() + game.getPlayer().getSize()))
@@ -112,7 +114,12 @@ public class EnemyTest {
                     && (enemyC.getPositionY() >= (game.getPlayer().getPositionY() - game.getPlayer().getSize()))) {
                 assertTrue(enemyC.hitPlayer(game.getPlayer()));
             }
-            game.update();
+            try {
+                game.update();
+            } catch (GameOverException e) {
+                fail("Not game over");
+            }
+
         }
 
     }

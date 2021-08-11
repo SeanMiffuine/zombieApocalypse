@@ -29,8 +29,6 @@ future!
 
 
 
-
-
 ## User Stories
 
 **As a User, I want to be able to:**
@@ -42,7 +40,22 @@ future!
 - eliminate enemies and get high score (in rounds)
 - lose when health reaches 0
 
-- Save game state: round number, enemies, ammo, health, bullet list, zombie list
+- Save game state: round number, enemies, ammo, health, bullet list, zombie list 
 - Reload game state upon opening the game
 - Choose to start new game upon opening the game
 
+
+## Phase 4: Task 2
+
+Test and design a class in your model package that is robust.  You must have at least one method that throws a checked exception.
+You must have one test for the case where the exception is expected and another where the exception is not expected.
+
+In the GameData class, in the update() method, there is a GameOverException thrown; this is designed to throw an exception whenever
+the game is over (when the player loses all it's health)
+In the GameRun class, in the gameRunLoop() method, it try catches the update() method of GameData; in the case of game over, it
+will not run through all the GameData, Game GUI, and Score GUI update methods. Instead, a message prompting you to restart the
+game will print in the console.
+
+For testing, in the GameDataTest class, there are two test methods: testUpdate() and testUpdateGameOver(). 
+testUpdate() runs update without expecting GameOver exception.
+testUpdateGameOver runes update() when game is over, throwing a GameOver exception.

@@ -1,5 +1,6 @@
 package ui;
 
+import exception.GameOverException;
 import model.GameData;
 import persistence.JsonReader;
 import persistence.JsonWriter;
@@ -103,13 +104,18 @@ public class GameRun extends JFrame {
     }
 
     // modifies: this
-    // effects: Runs main game loop. Updates game according to inputs and time elapsed.
+    // effects: Runs main game loop. Updates game according to inputs and time elapsed. Catches the thrown
+    // GameOverException if game is over.
     public void gameRunLoop() {
         // KeyListener concept from SpaceInvader
         while (true) {
-            game.update();
-            gameWindow.repaint();
-            scoreWindow.update();
+            try {
+                game.update();
+                gameWindow.repaint();
+                scoreWindow.update();
+            } catch (GameOverException e) {
+                System.out.println("Game is over, Please Press N or exit");
+            }
 
             //!!! Game window and score
             try {

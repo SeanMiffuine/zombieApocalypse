@@ -1,5 +1,6 @@
 package model;
 
+import exception.GameOverException;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import persistence.Saveable;
@@ -41,16 +42,18 @@ public class GameData implements Saveable {
 
     // modifies: this
     // effects: updates the game data as time goes on. Updates movements of all sprites,
-    // checks for kills, boundaries, game over, and next rounds.
-    public void update() {
-        if (!gameOver) {
-            spawn();
-            bulletUpdate();
-            enemyUpdate();
-            playerGetHit();
-            enemyGetHit();
-            setGameOver();
+    // checks for kills, boundaries, game over, and next rounds. If game is over, throws
+    //game over exception
+    public void update() throws GameOverException {
+        if (gameOver) {
+            throw new GameOverException();
         }
+        spawn();
+        bulletUpdate();
+        enemyUpdate();
+        playerGetHit();
+        enemyGetHit();
+        setGameOver();
     }
 
 //    // effects: returns data relating to the player object
