@@ -13,11 +13,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
-// Runs the game as well as take in inputs form user (Main game loop).
-// NOTE: some code is based off of material from class, e.g. the Space Invader Game.
-//       as well as from Json sample material
-// https://github.students.cs.ubc.ca/CPSC210/B02-SpaceInvadersBase
-// https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git
 public class GameRun extends JFrame {
     private static final String ADDRESS = "./data/gamestate.json";
     private static final int TIME_TO_UPDATE = 12;
