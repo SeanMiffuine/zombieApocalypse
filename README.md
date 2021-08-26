@@ -1,5 +1,4 @@
-# CPSC 210 Project: Demon Defender Game
-#### Sean Tang (Snake z7q8w)
+
 
 # CONTROLS: 
 - WASD to move
